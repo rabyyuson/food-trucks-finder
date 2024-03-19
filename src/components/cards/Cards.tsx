@@ -2,6 +2,7 @@ import useFoodTrucks from "../../lib/hooks/useFoodTrucks";
 import useGeolocation from "../../lib/hooks/useGeolocation";
 import haversine from "haversine";
 import { Coordinate, FoodTruck, Location } from "../../lib/types/types";
+import config from "../../config.json";
 import Card from "../card/Card";
 import clsx from "clsx";
 import Clock from "react-live-clock";
@@ -19,7 +20,7 @@ export default function Cards() {
     }
 
     function isNearby(start: Coordinate, end: Coordinate) {
-        return haversine(start, end, { threshold: 5, unit: "mile" });
+        return haversine(start, end, { threshold: config.FOODTRUCK_MILE_RADIUS, unit: "mile" });
     }
 
     function getNearbyFoodTrucks(foodTrucks: FoodTruck[], location: Location) {
