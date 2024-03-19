@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function Button() {
+    
     return (
         <div className="fixed top-0 left-0 w-full h-full items-center justify-center flex">
             <div className="p-5">

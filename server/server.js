@@ -1,5 +1,5 @@
 const http = require("http");
-const config = require("../config.json");
+const config = require("../src/config.json");
 const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -18,7 +18,10 @@ const server = http.createServer(async (request, response) => {
         if (request.url === "/api/food-trucks") {
             const fetchedData = await fetchData();
             httpCode = 200;
-            options = { "Content-Type": "application/json" };
+            options = {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*"
+            };
             output = JSON.stringify(fetchedData);
         } else {
             httpCode = 404;
