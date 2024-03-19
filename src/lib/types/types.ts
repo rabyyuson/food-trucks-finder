@@ -1,3 +1,21 @@
+export type Coordinate = {
+    latitude: number;
+    longitude: number;
+}
+
+export type Location = {
+    coords: {
+        accuracy: number;
+        altitude: number | null;
+        altitudeAccuracy: number | null;
+        heading: number | null;
+        latitude: number;
+        longitude: number;
+        speed: number | null;
+    };
+    timestamp: number;
+}
+
 export type FoodTruck = {
     dayorder: string;
     dayofweekstr: string;

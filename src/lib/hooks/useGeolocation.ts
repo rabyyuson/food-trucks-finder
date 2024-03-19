@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Location } from "../types/types";
 
 export default function useGeolocation() {
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState<Location | null>(null);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
