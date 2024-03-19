@@ -1,12 +1,12 @@
 const http = require("http");
 const config = require("../config.json");
+const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config();
 
 async function fetchData() {
-    const response = await fetch(config.SF_FOOD_TRUCK_API);
-    const data = await response.json();
-    return data;
+    const response = await axios.get(config.SF_FOOD_TRUCK_API);
+    return response.data;
 };
 
 const server = http.createServer(async (request, response) => {
@@ -20,6 +20,10 @@ const server = http.createServer(async (request, response) => {
             httpCode = 200;
             options = { "Content-Type": "application/json" };
             output = JSON.stringify(fetchedData);
+        } else {
+            httpCode = 404;
+            options = { "Content-Type": "text/plain" };
+            output = "Not Found";
         }
     } catch(error) {
         console.error("Error fetching data:", error);
@@ -32,6 +36,6 @@ const server = http.createServer(async (request, response) => {
     response.end(output);
 });
 
-server.listen(process.env.PORT, () => {
-    console.log(`Server listening on port: ${process.env.PORT}`)
+server.listen(process.env.SERVER_PORT, () => {
+    console.log(`Server listening on port: ${process.env.SERVER_PORT}`)
 })
