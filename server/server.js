@@ -35,6 +35,9 @@ const server = http.createServer(async (request, response) => {
         output = "Internal Server Error";
     }
 
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Methods", "GET");
+    
     response.writeHead(httpCode, options);
     response.end(output);
 });

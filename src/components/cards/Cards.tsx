@@ -5,7 +5,6 @@ import { Coordinate, FoodTruck, Location } from "../../lib/types/types";
 import Card from "../card/Card";
 import clsx from "clsx";
 import Clock from "react-live-clock";
-import { DateTime } from "luxon";
 
 export default function Cards() {
     const foodTrucks = useFoodTrucks();
@@ -20,7 +19,7 @@ export default function Cards() {
     }
 
     function isNearby(start: Coordinate, end: Coordinate) {
-        return haversine(start, end, { threshold: 10005, unit: "mile" });
+        return haversine(start, end, { threshold: 5, unit: "mile" });
     }
 
     function getNearbyFoodTrucks(foodTrucks: FoodTruck[], location: Location) {
@@ -51,7 +50,6 @@ export default function Cards() {
     }
 
     const nearbyFoodTrucks = getNearbyFoodTrucks(foodTrucks, location);
-    const dt = DateTime.now();
 
     return (
         <div>
@@ -80,7 +78,11 @@ export default function Cards() {
                         ))}
                     </ul>
                 )
-                : <p className="text-center mt-10">Sorry, there are no food trucks nearby within a 5 mile radius.</p>
+                : (
+                    <p className="text-center text-2xl font-semibold mt-10">
+                        Sorry, there are no food trucks nearby within a 5 mile radius.
+                    </p>
+                )
             }
         </div>
     );

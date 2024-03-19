@@ -5,7 +5,7 @@ export default function useGeolocation() {
     const [location, setLocation] = useState<Location | null>(null);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(
+        navigator?.geolocation?.getCurrentPosition(
             (position: any) => { setLocation(position) }, 
             (error: any) => { console.warn(`Unable to fetch location: ${error}`) },
             {
