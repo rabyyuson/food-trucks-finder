@@ -61,7 +61,7 @@ export default function Cards() {
                     <span className="font-light">Explore available San Francisco food trucks at</span>
                     {" "}
                     <span className="font-medium">
-                        <Clock format={"hh:mm:ss A"} blinking={true} ticking={true} timezone={"US/Pacific"} />
+                        <Clock format={"hh:mm:ss A"} blinking={true} ticking={true} timezone={Intl.DateTimeFormat().resolvedOptions().timeZone} />
                     </span>
                 </h4>
                 <div className="flex flex-row justify-center items-center gap-5">
