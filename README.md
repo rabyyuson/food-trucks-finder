@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+# Food Trucks Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app fetches 5 food trucks located in San Francisco that are open and within a 5 mile radius of the user. It makes use of data from [Mobile Food Schedule](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Schedule/jjew-r69b/about_data), a [Node.js](https://nodejs.org/) backend server utilizing the [http](https://nodejs.org/docs/latest/api/http.html) API, [Create React App](https://create-react-app.dev/) with [Typescript](https://www.typescriptlang.org/) support, [React](https://react.dev/) for the view, and [Tailwind](https://tailwindcss.com/) for styling.
 
-## Available Scripts
+## Getting started
 
-In the project directory, you can run:
+Clone the repo:
 
-### `npm start`
+```bash
+git clone https://github.com/rabyyuson/food-trucks-finder.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Install the dependencies:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
+Edit the `.env` file as needed then start the backend and frontend servers:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm run dev
+```
 
-### `npm run build`
+Both the backend and frontend servers will run and the client applicaation will be accessible via [localhost](http://localhost:3000).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Note
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The app makes use of the Geolocation API which utilizes the devices' Location Services. Be sure to enable it before interacting with the app to ensure correctness in the returned results. You can find more information on how to enable it from this [Wikihow](https://www.wikihow.com/Enable-Location-Services-on-Google-Chrome) article.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Future updates
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. It would be nice to use other frameworks such as [ExpressJS](https://expressjs.com/) or [NextJS](https://nextjs.org/) to handle our backend server. The current implementation is limited to just spinning up an http server. If we want to continue creating our own server, we will have to factor in creating a secure server such as [https](https://nodejs.org/api/https.html) and other security concerns plus features that goes with it such as routing, CORS handling, response handling etc.
+2. Our app only has 1 test which is very basic and does not capture all scenarios. We would want to perform comprehensive testing to ensure that all test cases we wanted covered are included and performs exactly how we wanted it to perform.
+3. It would be great to add integration with Map api such as [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript) to visually display the location of the food truck and can be interacted with by the user.

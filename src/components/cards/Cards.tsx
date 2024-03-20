@@ -1,13 +1,14 @@
+import { useState } from "react";
 import useFoodTrucks from "../../lib/hooks/useFoodTrucks";
 import useGeolocation from "../../lib/hooks/useGeolocation";
 import haversine from "haversine";
 import { Coordinate, FoodTruck, Location } from "../../lib/types/types";
-import config from "../../config.json";
 import Card from "../card/Card";
 import clsx from "clsx";
 import Clock from "react-live-clock";
 
 export default function Cards() {
+    const [radius, setRadius] = useState(5);
     const foodTrucks = useFoodTrucks();
     const location = useGeolocation();
 
@@ -20,7 +21,7 @@ export default function Cards() {
     }
 
     function isNearby(start: Coordinate, end: Coordinate) {
-        return haversine(start, end, { threshold: config.FOODTRUCK_MILE_RADIUS, unit: "mile" });
+        return haversine(start, end, { threshold: radius, unit: "mile" });
     }
 
     function getNearbyFoodTrucks(foodTrucks: FoodTruck[], location: Location) {
@@ -56,12 +57,23 @@ export default function Cards() {
         <div>
             <div className="text-center mb-10">
                 <h4 className="font-bold text-2xl">
-                    <span className="font-light">Explore available food trucks at</span>
+                    <span className="font-light">Explore available San Francisco food trucks at</span>
                     {" "}
                     <span className="font-medium">
                         <Clock format={"hh:mm:ss A"} blinking={true} ticking={true} timezone={"US/Pacific"} />
                     </span>
                 </h4>
+                <select
+                    className="border w-40 mt-5 p-2 rounded-md"
+                    onChange={(event) => { setRadius(Number(event.target.value)) }}
+                >
+                    <option value={5}>5 miles</option>
+                    <option value={25}>25 miles</option>
+                    <option value={50}>50 miles</option>
+                    <option value={100}>100 miles</option>
+                    <option value={200}>200 miles</option>
+                    <option value={999999}>Any distance</option>
+                </select>
             </div>
             {nearbyFoodTrucks.length 
                 ? (
@@ -80,8 +92,10 @@ export default function Cards() {
                     </ul>
                 )
                 : (
-                    <p className="text-center text-2xl font-semibold mt-10">
-                        Sorry, there are no food trucks nearby within a 5 mile radius.
+                    <p className="text-center text-xl font-semibold mt-10">
+                        Sorry, there are no food trucks nearby within {radius} miles.
+                        <br/>
+                        Please try again.
                     </p>
                 )
             }
