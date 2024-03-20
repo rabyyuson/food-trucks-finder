@@ -9,7 +9,7 @@ import Clock from "react-live-clock";
 
 export default function Cards() {
     const [radius, setRadius] = useState(5);
-    const [numberOfResults, setNumberOfResults] = useState(5);
+    const [numberOfResults, setNumberOfResults] = useState(3);
     const foodTrucks = useFoodTrucks();
     const location = useGeolocation();
 
@@ -80,7 +80,8 @@ export default function Cards() {
                         className="border w-40 mt-5 p-2 rounded-md"
                         onChange={(event) => { setNumberOfResults(Number(event.target.value)) }}
                     >
-                        <option value={5}>5 results</option>
+                        <option value={3}>3 results</option>
+                        <option value={10}>10 results</option>
                         <option value={25}>25 results</option>
                         <option value={50}>50 results</option>
                         <option value={100}>100 results</option>
@@ -98,7 +99,10 @@ export default function Cards() {
                                     key % 2 ? "bg-slate-200" : "border-2 border-slate-200"
                                 )}
                             >
-                                <Card foodTruck={foodTruck} />
+                                <Card foodTruck={foodTruck} distance={haversine(
+                                    { latitude: location.coords.latitude, longitude: location.coords.longitude },
+                                    { latitude: Number(foodTruck.latitude), longitude: Number(foodTruck.longitude) },
+                                )} />
                             </li>
                         ))}
                     </ul>

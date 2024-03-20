@@ -1,10 +1,13 @@
 import { FoodTruck } from "../../lib/types/types";
 import Clock from "../icons/Clock";
 import MapPin from "../icons/MapPin";
+import Map from "../icons/Map";
 
 export default function Card({
+    distance,
     foodTruck,
 }: {
+    distance: number;
     foodTruck: FoodTruck;
 }) {
     return (
@@ -21,6 +24,14 @@ export default function Card({
                         <Clock />
                     </span>
                     {foodTruck.starttime} - {foodTruck.endtime}
+                </p>
+                <p className="text-sm flex flex-row text-left items-center gap-2">
+                    <span>
+                        <Map />
+                    </span>
+                    {Math.floor(distance)}
+                    {" "}
+                    miles
                 </p>
                 <p className="text-sm flex flex-row text-left items-center gap-2">
                     <span>

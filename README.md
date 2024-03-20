@@ -1,6 +1,6 @@
 # Food Trucks Finder
 
-This app fetches 5 food trucks located in San Francisco that are open and within a 5 mile radius of the user. It makes use of data from [Mobile Food Schedule](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Schedule/jjew-r69b/about_data), a [Node.js](https://nodejs.org/) backend server utilizing the [http](https://nodejs.org/docs/latest/api/http.html) API, [Create React App](https://create-react-app.dev/) with [Typescript](https://www.typescriptlang.org/) support, [React](https://react.dev/) for the view, and [Tailwind](https://tailwindcss.com/) for styling.
+This app fetches food trucks located in San Francisco that are open and within a selected mile radius of the user. It makes use of data from [Mobile Food Schedule](https://data.sfgov.org/Economy-and-Community/Mobile-Food-Schedule/jjew-r69b/about_data), a [Node.js](https://nodejs.org/) backend server utilizing the [http](https://nodejs.org/docs/latest/api/http.html) API, [Create React App](https://create-react-app.dev/) with [Typescript](https://www.typescriptlang.org/) support, [React](https://react.dev/) for the view, and [Tailwind](https://tailwindcss.com/) for styling.
 
 ## Getting started
 
