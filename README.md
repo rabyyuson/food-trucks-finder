@@ -16,7 +16,15 @@ Install the dependencies:
 npm install
 ```
 
-Edit the `.env` file as needed then start the backend and frontend servers:
+Create a `.env` file and add the following properties:
+
+```bash
+SERVER_PORT=3001
+REACT_APP_BACKEND_URL=http://localhost:3001
+SF_FOOD_TRUCK_API=https://data.sfgov.org/resource/jjew-r69b.json
+```
+
+Start the backend and frontend servers concurrently:
 
 ```bash
 npm run dev
