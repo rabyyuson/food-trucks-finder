@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import config from "../../config.json";
 import { FoodTruck } from "../types/types";
 
 export default function useFoodTrucks() {
@@ -8,7 +7,7 @@ export default function useFoodTrucks() {
     useEffect(() => {
         try {
             const fetchData = async () => {
-                const response = await fetch(`${config.BACKEND_URL}/api/food-trucks`);
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/food-trucks`);
                 const data = await response.json();
                 setFoodTrucks(data);
             }

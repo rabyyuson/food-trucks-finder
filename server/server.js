@@ -1,11 +1,10 @@
 const http = require("http");
-const config = require("../src/config.json");
 const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config();
 
 async function fetchData() {
-    const response = await axios.get(config.SF_FOOD_TRUCK_API);
+    const response = await axios.get(process.env.SF_FOOD_TRUCK_API);
     return response.data;
 };
 
