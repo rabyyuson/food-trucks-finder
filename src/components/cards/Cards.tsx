@@ -81,10 +81,11 @@ export default function Cards() {
                         onChange={(event) => { setNumberOfResults(Number(event.target.value)) }}
                     >
                         <option value={3}>3 results</option>
-                        <option value={10}>10 results</option>
-                        <option value={25}>25 results</option>
-                        <option value={50}>50 results</option>
-                        <option value={100}>100 results</option>
+                        <option value={20}>10 results</option>
+                        <option value={50}>25 results</option>
+                        <option value={100}>50 results</option>
+                        <option value={200}>100 results</option>
+                        <option value={500}>500 results</option>
                     </select>
                 </div>
             </div>
@@ -109,9 +110,7 @@ export default function Cards() {
                 )
                 : (
                     <p className="text-center text-xl font-semibold mt-10">
-                        Sorry, there are no food trucks nearby within {radius} miles.
-                        <br/>
-                        Please try again.
+                        Sorry, there are no food trucks within {radius} miles.
                     </p>
                 )
             }
