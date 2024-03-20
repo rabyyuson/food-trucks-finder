@@ -1,25 +1,15 @@
 import { useState } from "react";
 import useFoodTrucks from "../../lib/hooks/useFoodTrucks";
-import useGeolocation from "../../lib/hooks/useGeolocation";
 import haversine from "haversine";
 import { Coordinate, FoodTruck, Location } from "../../lib/types/types";
 import Card from "../card/Card";
 import clsx from "clsx";
 import Clock from "react-live-clock";
 
-export default function Cards() {
+export default function Cards({ location }: { location: Location }) {
     const [radius, setRadius] = useState(5);
     const [numberOfResults, setNumberOfResults] = useState(3);
     const foodTrucks = useFoodTrucks();
-    const location = useGeolocation();
-
-    if (!location) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <div className="text-center text-2xl font-semibold">Loading location... Please wait...</div>
-            </div>
-        );
-    }
 
     function isNearby(start: Coordinate, end: Coordinate) {
         return haversine(start, end, { threshold: radius, unit: "mile" });
@@ -58,7 +48,7 @@ export default function Cards() {
         <div>
             <div className="text-center mb-10">
                 <h4 className="font-bold text-2xl">
-                    <span className="font-light">Explore available San Francisco food trucks at</span>
+                    <span className="font-light">Explore available food trucks in San Francisco at</span>
                     {" "}
                     <span className="font-medium">
                         <Clock format={"hh:mm:ss A"} blinking={true} ticking={true} timezone={Intl.DateTimeFormat().resolvedOptions().timeZone} />

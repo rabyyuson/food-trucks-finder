@@ -19,7 +19,7 @@ export default function Button({
         )}
           onClick={() => {
             setClicked(true);
-            setTimeout(() => { onButtonClick() }, 700);
+            setTimeout(() => { onButtonClick() }, 600);
           }}
         >
           <button className="bg-blue-500 rounded-lg text-white border-t-2 border-blue-300 font-bold items-center justify-center text-xl sm:text-2xl md:text-3xl p-5 md:p-10 transition duration-300 ease-in-out group-hover:border-blue-400 group-hover:bg-blue-700">
