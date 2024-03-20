@@ -9,6 +9,7 @@ import Clock from "react-live-clock";
 
 export default function Cards() {
     const [radius, setRadius] = useState(5);
+    const [numberOfResults, setNumberOfResults] = useState(5);
     const foodTrucks = useFoodTrucks();
     const location = useGeolocation();
 
@@ -48,7 +49,7 @@ export default function Cards() {
 
                 return isNearMe && now.getDay() === Number(foodTruck.dayorder) && isWithinBusinessHours;
             })
-            .slice(0,5);
+            .slice(0,numberOfResults);
     }
 
     const nearbyFoodTrucks = getNearbyFoodTrucks(foodTrucks, location);
@@ -63,17 +64,28 @@ export default function Cards() {
                         <Clock format={"hh:mm:ss A"} blinking={true} ticking={true} timezone={"US/Pacific"} />
                     </span>
                 </h4>
-                <select
-                    className="border w-40 mt-5 p-2 rounded-md"
-                    onChange={(event) => { setRadius(Number(event.target.value)) }}
-                >
-                    <option value={5}>5 miles</option>
-                    <option value={25}>25 miles</option>
-                    <option value={50}>50 miles</option>
-                    <option value={100}>100 miles</option>
-                    <option value={200}>200 miles</option>
-                    <option value={999999}>Any distance</option>
-                </select>
+                <div className="flex flex-row justify-center items-center gap-5">
+                    <select
+                        className="border w-40 mt-5 p-2 rounded-md"
+                        onChange={(event) => { setRadius(Number(event.target.value)) }}
+                    >
+                        <option value={5}>5 miles</option>
+                        <option value={25}>25 miles</option>
+                        <option value={50}>50 miles</option>
+                        <option value={100}>100 miles</option>
+                        <option value={200}>200 miles</option>
+                        <option value={999999}>Any distance</option>
+                    </select>
+                    <select
+                        className="border w-40 mt-5 p-2 rounded-md"
+                        onChange={(event) => { setNumberOfResults(Number(event.target.value)) }}
+                    >
+                        <option value={5}>5 results</option>
+                        <option value={25}>25 results</option>
+                        <option value={50}>50 results</option>
+                        <option value={100}>100 results</option>
+                    </select>
+                </div>
             </div>
             {nearbyFoodTrucks.length 
                 ? (
