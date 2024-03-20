@@ -48,7 +48,7 @@ export default function Cards({ location }: { location: Location }) {
         <div>
             <div className="text-center mb-10">
                 <h4 className="font-bold text-2xl">
-                    <span className="font-light">Explore available food trucks in San Francisco at</span>
+                    <span className="font-light">Explore today's available food trucks at</span>
                     {" "}
                     <span className="font-medium">
                         <Clock format={"hh:mm:ss A"} blinking={true} ticking={true} timezone={Intl.DateTimeFormat().resolvedOptions().timeZone} />
@@ -64,17 +64,17 @@ export default function Cards({ location }: { location: Location }) {
                         <option value={50}>50 miles</option>
                         <option value={100}>100 miles</option>
                         <option value={200}>200 miles</option>
-                        <option value={999999}>Any distance</option>
+                        <option value={9999999}>Any distance</option>
                     </select>
                     <select
                         className="border w-40 mt-5 p-2 rounded-md"
                         onChange={(event) => { setNumberOfResults(Number(event.target.value)) }}
                     >
                         <option value={3}>3 results</option>
-                        <option value={20}>10 results</option>
-                        <option value={50}>25 results</option>
-                        <option value={100}>50 results</option>
-                        <option value={200}>100 results</option>
+                        <option value={10}>10 results</option>
+                        <option value={25}>25 results</option>
+                        <option value={50}>50 results</option>
+                        <option value={100}>100 results</option>
                         <option value={500}>500 results</option>
                     </select>
                 </div>
