@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FoodTruck } from "../types/types";
+import dotenv from "dotenv/config";
 
 export default function useFoodTrucks() {
     const [foodTrucks, setFoodTrucks] = useState<FoodTruck[]>([]);
@@ -7,7 +8,7 @@ export default function useFoodTrucks() {
     useEffect(() => {
         try {
             const fetchData = async () => {
-                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/food-trucks`);
+                const response = await fetch(`${process.env.REACT_APP_SF_FOOD_TRUCK_API}`);
                 const data = await response.json();
                 setFoodTrucks(data);
             }
