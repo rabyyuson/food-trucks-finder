@@ -14,7 +14,7 @@ export default function useFoodTrucks() {
             }
             fetchData();
         } catch(error) {
-            console.error(`Error fetching food trucks from api: ${error}`);
+            console.error(`Error fetching food trucks: ${error}`);
         }
     }, []);
 
